@@ -1,10 +1,20 @@
 module Mux16 (
     input [15:0] e1,
     input [15:0] e2,
-    input sel,
-    output [15:6] sal
+    input wire sel,
+    output [15:0] sal
 );
+reg [15:0] aux;
 
-assign sal = (sel)? e2:e1;
+always@(*)
+    begin
+        case(sel)
+            1'b0:
+                aux = e1;
+            1'b1:
+                aux = e2;
+        endcase
+    end
+assign sal = aux;
 
 endmodule

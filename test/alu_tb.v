@@ -2,27 +2,29 @@
 
 module alu_tb;
     
-    reg [31:0] SrcA;
-    reg [31:0] SrcB;
-    reg [2:0] AluControl;
-    wire [31:0] AluResult;
+    reg [31:0] srcA;
+    reg [31:0] srcB;
+    reg [2:0] ALUControl;
+    wire [31:0] res;
+    wire zero;
 
     ALU uut(
-        .SrcA(SrcA),
-        .SrcB(SrcB),
-        .AluControl(AluControl),
-        .AluResult(AluResult)
+        .srcA(srcA),
+        .srcB(srcB),
+        .ALUControl(ALUControl),
+        .res(res),
+        .zero(zero)
     );
 
     initial begin
-        SrcA = 10;
-        SrcB = 12;
+        srcA = 10;
+        srcB = 12;
         
 
         for (integer i = 0 ; i<8 ; i=i+1 ) begin
-            AluControl = i;
+            ALUControl = i;
             #10
-            $display("[op: %b] = %h (%d)", AluControl, AluResult, AluResult);
+            $display("{\n[op: %b] = %h (%d)\nzero: %b\n}", ALUControl, res, res, zero);
         end
 
         $finish;

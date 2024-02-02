@@ -5,6 +5,7 @@
 `include "dataPath/Adder.v"
 `include "dataPath/Adder16.v"
 `include "dataPath/Mux2x1.v"
+`include "dataPath/Mux4x1.v"
 `include "dataPath/Mux16.v"
 
 module dataPath(
@@ -47,7 +48,7 @@ wire[31:0] s_res;       //multData      -> BR
 reg[15:0] cuatro = 3'b100;
 // -------- -------- --------
 
-Mu16 MultBranch(
+Mux16 MultBranch(
     .e1(cuatro),
     .e2(s_immExt[15:0]),
     .sel(branch),
@@ -57,16 +58,16 @@ Mu16 MultBranch(
 Adder16 AdderPCNext(
     .op1(s_addSrc),
     .op2(s_pc),
-    .res(s_pcNext)
+    .sal(s_pcNext)
 );
 
 Adder16 AdderPCJump(
     .op1(s_immExt[15:0]),
     .op2(s_pc),
-    .res(s_pcJump)
+    .sal(s_pcJump)
 );
 
-Mu16 MultJump(
+Mux16 MultJump(
     .e1(s_pcNext),
     .e2(s_pcJump),
     .sel(jump),
@@ -96,7 +97,7 @@ SE sExt(
     .immExt(s_immExt)
 );
 
-Mu MultSrcB(
+Mux2x1 MultSrcB(
     .e1(s_rd2),
     .e2(s_immExt),
     .sel(ALUSrc),
@@ -111,7 +112,7 @@ ALU ALU1(
     .res(s_ALURes)
 );
 
-Mu4 MultData(
+Mux4x1 MultData(
     .e1(s_ALURes),
     .e2(readData),
     .e3(s_pcNext),
