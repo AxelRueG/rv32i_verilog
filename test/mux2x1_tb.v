@@ -1,4 +1,4 @@
-`include "dataPath/Mux2x1.v"
+`include "./dataPath/Mux2x1.v"
 
 module Mux2x1_tb;
     

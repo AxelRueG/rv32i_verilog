@@ -1,14 +1,13 @@
-`include "dataPath/PC.v"
+`include "./dataPath/PC.v"
 
 module TB_pc;
 
-reg clk, reset;
+reg clk;
 reg [15:0] pcNext;
 wire [15:0] pc;
 
 PC uut(
     .clk(clk),
-    .reset(reset),
     .pcNext(pcNext),
     .pc(pc)
 );
@@ -23,9 +22,7 @@ end
 initial begin
     $display("comenzando test");
 
-    reset = 1;
     #20
-    reset = 0;
     pcNext = 16'b0000000000000001;
     $display("pcNext: %b\npc: %b\n", pcNext, pc);
 
@@ -35,7 +32,6 @@ initial begin
 
     #20
     $display("pcNext: %b\npc: %b\n", pcNext, pc);
-    reset = 1;
     
     #20
     $display("pcNext: %b\npc: %b\n", pcNext, pc);

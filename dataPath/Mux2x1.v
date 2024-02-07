@@ -5,6 +5,14 @@ module Mux2x1 (
     output [31:0] sal
 );
 
-assign sal = (sel)? e2:e1;
+    reg [31:0] aux;
+
+    always @(*) begin
+        case(sel)
+            1'b0: aux <= e1;
+            1'b1: aux <= e2;
+        endcase
+    end
+    assign sal = aux;
     
 endmodule

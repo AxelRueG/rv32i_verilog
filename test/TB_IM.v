@@ -1,4 +1,4 @@
-`include "memory/IM.v"
+`include "./memory/IM.v"
 
 module TB_IM;
     

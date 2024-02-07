@@ -1,15 +1,19 @@
 module PC (
-    input wire clk, reset,
+    input wire clk,
     input wire [15:0] pcNext,
-    output reg [15:0] pc
+    output wire [15:0] pc
 );
 
-always @(posedge clk or posedge reset) begin
-    if (reset) begin
-        pc <=16'b0;
-    end else if (clk) begin
-        pc <= pcNext;
+    reg [15:0] s_pc;
+
+    initial begin
+        s_pc = 0;
     end
-end
+
+    always @(posedge clk) begin
+        s_pc <= pcNext;
+    end
+
+    assign pc = s_pc;
 
 endmodule

@@ -1,4 +1,4 @@
-`include "dataPath/Adder.v"
+`include "./dataPath/Adder.v"
 
 module adder_tb;
     

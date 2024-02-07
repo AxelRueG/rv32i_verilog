@@ -1,4 +1,4 @@
-`include "dataPath/SE.v"
+`include "./dataPath/SE.v"
 
 module SE_tb;
 

@@ -1,4 +1,4 @@
-`include "memory/DM.v"
+`include "./memory/DM.v"
 
 module TB_DM;
     

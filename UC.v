@@ -1,5 +1,5 @@
-`include "aluDeco.v"
-`include "mainDeco.v"
+`include "controlUnit/aluDeco.v"
+`include "controlUnit/mainDeco.v"
 
 module UC(
     input wire f7,
@@ -8,8 +8,8 @@ module UC(
     input wire zero,
     output wire branch,
     output wire jump,
-    output [1:0] resSrc,
     output wire memWrite,
+    output [1:0] resSrc,
     output [2:0] ALUcontrol,
     output wire aluSrc,
     output [1:0] immSrc,

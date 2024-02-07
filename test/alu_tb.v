@@ -1,4 +1,4 @@
-`include "dataPath/ALU.v"
+`include "./dataPath/ALU.v"
 
 module alu_tb;
     
