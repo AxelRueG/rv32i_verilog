@@ -1,6 +1,6 @@
 module DM(
     input clk, we,
-    input [4:0] addres,
+    input [15:0] addres,
     input [31:0] wd,
     output reg [31:0] rd
 );

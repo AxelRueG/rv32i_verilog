@@ -1,7 +1,7 @@
 module IM (
-    input clk,
-    input [5:0] addres,
-    output reg [31:0] rd
+    // input clk,
+    input [15:0] addres,
+    output [31:0] rd
 );
     // Definición del tipo de la memoria ROM
     reg [31:0] ROM [0:63];
@@ -75,8 +75,7 @@ module IM (
     end
 
     // Lógica para acceder a la memoria ROM
-    always @(posedge clk) begin
-        rd <= ROM[addres];
-    end
+    assign rd = ROM[addres];
+    
 
 endmodule
