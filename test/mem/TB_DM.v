@@ -3,7 +3,7 @@
 module TB_DM;
     
     reg clk, we;
-    reg [4:0] addres;
+    reg [15:0] addres;
     reg [31:0] wd;
     wire [31:0] rd;
 

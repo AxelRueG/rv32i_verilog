@@ -9,25 +9,26 @@ module BR(
     output [31:0] rd2
 );
 
-  reg [31:0] regBank[31:0];
-  integer i;
+    reg [31:0] regBank[31:0];
+    integer i;
 
-  initial begin
-      for(i = 0;i<32;i=i+1) begin
-          regBank[i] <= 32'h00000000;
-      end
-  end
+    // iniciamos todos los registros en cero  
+    initial begin
+        for(i = 0;i<32;i=i+1) begin
+            regBank[i] <= 32'h00000000;
+        end
+    end
 
-  always @(posedge clk)
-  begin
-      if(we)
-      begin
-          regBank[a3] <= wd3;
-          //que escriba
-      end
-      //bla
-  end
-  assign rd1 = regBank[a1];
-  assign rd2 = regBank[a2];
+    always @(posedge clk)
+    begin
+        if(we)
+        begin
+            regBank[a3] <= wd3;
+            //que escriba
+        end
+        //bla
+    end
+    assign rd1 = regBank[a1];
+    assign rd2 = regBank[a2];
 
 endmodule

@@ -51,7 +51,7 @@ module dataPath_tb;
     end
 
     initial begin
-        $dumpfile("dataPath.vcd");
+        $dumpfile("./waves/dataPath.vcd");
         $dumpvars(0, dataPath_tb);
 
         // simulamos un addi

@@ -7,22 +7,30 @@ module aluDeco(
 );
 
 reg[2:0] aluControlAux = 3'b000;
+wire andAux;
+assign andAux = f7 && op;
 
-always @(*)
-begin
+always @(*) begin
     case (aluOp)
         2'b00:
             aluControlAux = 3'b000; //add
         2'b01:
-            aluControlAux = 3'b001; //substract
+            case(f3)
+                3'b000:
+                    aluControlAux = 3'b100; //BEQ
+                3'b100:
+                    aluControlAux = 3'b101;//BLT
+                default:
+                    aluControlAux = 3'b001; //substract
+            endcase
         2'b10:
             case(f3)
                 3'b000:
                     if(f7 && op)
                     begin
-                        aluControlAux = 3'b000; //add
+                        aluControlAux = 3'b001; //substract
                     end else begin
-                        aluControlAux = 3'b001;  //substract
+                        aluControlAux = 3'b000;  //add
                     end
                 3'b010:
                     aluControlAux = 3'b101;     //set less than

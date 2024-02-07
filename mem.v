@@ -20,8 +20,8 @@ module mem(
     );
 
     IM instructionMemory(
-        .addres(pc),
-        .rd(instr)
+        .pc(pc),
+        .instr(instr)
     );
 
 endmodule

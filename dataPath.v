@@ -29,8 +29,8 @@ module dataPath (
     //                                      Salidas
     // ---------------------------------------------------------------------------------------------
     output [15:0] pc,
-    output [31:0] ALUResult,
-    output [31:0] writeData,
+    output [31:0] ALUResult,    // direccion para datamemory
+    output [31:0] writeData,    // valor a guardar
     output wire zero,
     output [6:0] opecode,
     output [2:0] f3,
@@ -137,7 +137,7 @@ module dataPath (
 
     assign f7 = instr[30];
     assign f3 = instr[14:12];
-    assign op = instr[6:0];
+    assign opecode = instr[6:0];
 
 
 endmodule
