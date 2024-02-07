@@ -29,12 +29,20 @@ module dataPath_tb;
         .clk(clk),
         .instr(instr),
         .readData(readData),
+        .branch(branch),
+        .jump(jump),
+        .resultSrc(resultSrc),
+        .ALUControl(ALUControl),
+        .ALUSrc(ALUSrc),
         .inmSrc(inmSrc),
         .regWrite(regWrite),
-        .ALUControl(ALUControl),
         .pc(pc),
         .ALUResult(ALUResult),
-        .writeData(writeData)
+        .writeData(writeData),
+        .zero(zero),
+        .opecode(opecode),
+        .f3(f3),
+        .f7(f7)
     );
 
     initial begin
@@ -50,13 +58,13 @@ module dataPath_tb;
         instr = 32'b00000000000100001000000100000000;
         readData = 32'bx;
         
-        branch = 0;
-        jump = 0;
-        resultSrc = 0; 
+        branch = 1'b0;
+        jump = 1'b0;
+        resultSrc = 2'b00; 
         ALUControl = 3'b000;
-        ALUSrc = 1;
+        ALUSrc = 1'b1;
         inmSrc = 2'b00;
-        regWrite = 1;
+        regWrite = 1'b1;
          
         $display("--- Entradas ---");
         $display("instr: %b", instr);
