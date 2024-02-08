@@ -24,16 +24,17 @@ begin
             end
         3'b010:
             begin
-                aux = srcA && srcB;
+                aux = srcA & srcB;
                 aux_zero <= 0;
             end
         3'b011:
             begin
-                aux = srcA || srcB;
+                aux = srcA | srcB;
                 aux_zero <= 0;
             end
         3'b100:
             begin
+                aux = (srcA == srcB);
                 aux_zero <= srcA == srcB;
             end
         3'b101:

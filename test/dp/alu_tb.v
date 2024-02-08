@@ -17,15 +17,42 @@ module alu_tb;
     );
 
     initial begin
-        srcA = 10;
-        srcB = 12;
-        
+        $dumpfile("./waves/alu_tb.vcd");
+        $dumpvars(0, alu_tb);
 
-        for (integer i = 0 ; i<8 ; i=i+1 ) begin
-            ALUControl = i;
-            #10
-            $display("{\n[op: %b] = %h (%d)\nzero: %b\n}", ALUControl, res, res, zero);
-        end
+        srcA = 32'h00000003;
+        srcB = 32'h00000001;
+        
+        // or  t0, s0, s1
+        ALUControl = 3'b011;
+        #10
+        // and t1, s0, s1
+        ALUControl = 3'b010;
+        #10
+        // odd t2, s0, s1
+        ALUControl = 3'b000;
+        #10
+        // sub t3, s0, s1
+        ALUControl = 3'b001;
+        #10
+        // sub t4, s1, s0
+        srcA = 32'h00000001;
+        srcB = 32'h00000003;
+        ALUControl = 3'b001;
+        #10
+        // slt t5, s0, s1
+        srcA = 32'h00000003;
+        srcB = 32'h00000001;
+        ALUControl = 3'b101;
+        #10
+        // slt t6, s1, s0
+        ALUControl = 3'b101;
+        srcA = 32'h00000001;
+        srcB = 32'h00000003;
+        #10
+        // eq t6, s1, t4
+        ALUControl = 3'b100;
+        #10
 
         $finish;
     end

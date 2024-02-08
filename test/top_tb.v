@@ -18,9 +18,9 @@ module top_tb;
         $dumpfile("./waves/top_tb.vcd");
         $dumpvars(0, top_tb);    
 
-        for (i = 0; i<5 ; i = i + 1) begin
+        for (i = 0; i<100 ; i = i + 1) begin
             #10
-            $display("instr: %h", instr);
+            $display("instr[%d]: %h", i, instr);
         end
 
         $finish;
